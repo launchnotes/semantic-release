@@ -1,0 +1,23 @@
+{
+  "name": "@launchnotes/semantic-release",
+  "version": "0.0.1",
+  "description": "Publish categorized release to your LaunchNotes page",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/launchnotes/semantic-release.git"
+  },
+  "keywords": [
+    "semantic-release",
+    "launchnotes"
+  ],
+  "author": "Tyler Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/launchnotes/semantic-release/issues"
+  },
+  "homepage": "https://github.com/launchnotes/semantic-release#readme"
+}

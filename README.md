@@ -1,1 +1,1 @@
-# semantic-release
+# @launchnotes/semantic-release
