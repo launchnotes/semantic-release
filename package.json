@@ -47,13 +47,10 @@
           "notifySubscribers": true,
           "headlineTemplate": "{name} ({datetime})",
           "scopeCategoryMap": {
-            "admin": "admin-1",
-            "announcements": "announcements",
-            "api": "api-1",
-            "embed": "embedded-widgets",
-            "feedback": "feedback",
-            "work-?items?": "roadmap",
-            "roadmap": "roadmap"
+            "build": "build",
+            "config": "config",
+            "dependencies": "dependencies",
+            "plugin": "plugin"
           }
         }
       ]
