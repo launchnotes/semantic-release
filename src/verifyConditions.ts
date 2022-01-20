@@ -11,8 +11,15 @@ const verifyConditions = (pluginConfig: PluginConfiguration, context: Context) =
   const errors: string[] = [];
   
   const { logger: { log }, env } = context;
+  const {
+    projectId,
+    publish,
+    scopeCategoryMap,
+    notifySubscribers,
+    defaultCategories,
+  } = pluginConfig;
 
-  if (!isString(pluginConfig.projectId)) {
+  if (!isString(projectId)) {
     errors.push('LaunchNotes `projectId` is required');
   }
 
@@ -20,24 +27,17 @@ const verifyConditions = (pluginConfig: PluginConfiguration, context: Context) =
     errors.push('environment variable `LAUNCHNOTES_API_KEY` is required.  Please create a management key and pass it as an environment variable when calling semantic release');
   }
 
-  if (pluginConfig.publish && !isBoolean(pluginConfig.publish)) {
+  if (publish && !isBoolean(publish)) {
     errors.push('`publish` must be a boolean');
   }
 
-  if (pluginConfig.notifySubscribers && !isBoolean(pluginConfig.notifySubscribers)) {
+  if (notifySubscribers && !isBoolean(notifySubscribers)) {
     errors.push('`notifySubscribers` must be a boolean');
   }
 
-  if (pluginConfig.scopeCategoryMap) {
-    /**
-     * We are expecting a valid Record<string, string> object
-     * eg.
-     * {
-     *   'scope': 'category',
-     * }
-     */
-    if (isPlainObject(pluginConfig.scopeCategoryMap)) {
-      if (!Object.keys(pluginConfig.scopeCategoryMap).every(isString) || !Object.values(pluginConfig.scopeCategoryMap).every(isString)) {
+  if (scopeCategoryMap) {
+    if (isPlainObject(scopeCategoryMap)) {
+      if (!Object.keys(scopeCategoryMap).every(isString) || !Object.values(scopeCategoryMap).every(isString)) {
         errors.push('you must provide a valid Record<string, string> object to `scopeCategoryMap`');
       }
       // @TODO: Verify the category slugs are legit on the server
@@ -46,8 +46,8 @@ const verifyConditions = (pluginConfig: PluginConfiguration, context: Context) =
     }
   }
 
-  if (pluginConfig.defaultCategories) {
-    if (isArray(pluginConfig.defaultCategories) && !pluginConfig.defaultCategories.every(isString)) {
+  if (defaultCategories) {
+    if (isArray(defaultCategories) && !defaultCategories.every(isString)) {
       errors.push('you must provide a valid array of strings to `defaultCategories`');
     }
   }
